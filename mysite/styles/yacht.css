@@ -1,0 +1,138 @@
+.grid-container {
+  display: grid;
+  align-items: stretch;
+  grid-template-columns: 32px 1fr 2fr 32px;
+  grid-template-rows: 19vmin 10vmin 2fr auto;
+  grid-template-areas: "header header header header" "header_content header_content header_content header_content" "content content content content" "footer footer footer footer";
+}
+
+
+
+.header_content {
+	display: flex;
+	padding: 16px;
+	grid-area: header_content;
+	align-content: center;
+	text-align: center;
+	    background: #2a3e63;
+	color: white;
+}
+
+.header_content .count{
+	flex: 1;
+	margin-left: 12px;
+}
+
+
+.header_content .sort{
+	flex: 1;
+}
+
+.content {
+	display: flex;
+	grid-area: content;
+	background: #2a3e63;
+
+    justify-content: center;
+}
+
+.cell_wrapper{
+	padding: 8px;
+	max-width: 400px;
+	background: #d4d7e0;
+}
+
+.page_selector{
+	margin-bottom: 16px;
+	color: white;
+}
+
+
+.page_selector ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	   height: 22px;
+    border-radius: 8px;
+    background: #325d80;
+    padding: 8px;
+}
+
+.page_selector ul li{
+
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.date{
+  flex: 1;
+}
+
+.date .end{
+  float: right;
+}
+.calendar {
+  display: flex;
+}
+.calendar *{
+  flex: 1;
+}
+
+.cell_wrapper .select_where{
+  width: 100%;
+  color: black;
+}
+
+
+.text {
+  max-height: 100%;
+  font-size: 0.9em;
+}
+
+
+.carousel{
+	width: 400px;
+}
+
+.carousel .item_wrapper{
+
+}
+
+.carousel .item_wrapper .item {
+  max-height: 380px;
+  width: 262px;
+  background: white;
+  margin: 0 auto;
+}
+
+.carousel .item .content_wrapper{
+  width: 242px;
+  height: 380px;
+  background-size:cover;
+  margin: 0 auto;
+  display: flex;
+}
+
+.carousel .item .content_wrapper *{
+  align-self: flex-end;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.carousel .item .content_wrapper h5{
+  color: white;
+  font-size: 16pt;
+}
+
+.carousel .item .content_wrapper span{
+  font-size: 14pt;
+}
+
+.carousel .item .content_wrapper .content{
+  margin-top: 8px;
+  margin-bottom: 8px;
+}

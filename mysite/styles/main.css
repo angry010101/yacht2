@@ -1,0 +1,119 @@
+﻿body {
+	padding: 0;
+	margin: 0;
+	font-size: 120%;
+}
+
+
+
+.header { 
+  position: relative;
+  padding-right: 2%;
+  grid-area: header; 
+	background: url(../images/header_back.png);
+	background-size:cover;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  box-shadow: 0 0 12px rgba(0,0,28,10);
+  padding-bottom: 0
+}
+
+.header .logo {
+	width: 22.5vmin;
+	position: absolute;
+  bottom: 5%;
+  margin-left: 30px;
+}
+
+.header .contact {
+  padding: 8px;
+  color: white;
+  margin-left: auto;
+  align-self: flex-end;
+  flex: 1;
+  text-align: right;
+}
+
+
+
+.navigation { 
+  display: flex;
+  flex-wrap: nowrap;
+  text-decoration: none;
+  list-style-type: none;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+    align-self: flex-end;
+    text-align: center;
+    flex: 3;
+    background: #3f506b;
+  }
+  .navigation img {
+    flex-grow: 1;
+  }
+.navigation a {
+  display: inline;
+  flex-grow: 1;
+  padding: 8px;
+    flex-basis: 0;
+    color: white;
+   }
+
+.navigation a:hover{
+  background: black;
+}
+
+/* footer */
+
+.footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  background: url(../images/sea_footer.jpg);
+  background-size:cover;
+}
+
+.footer * {
+/*  flex-grow: 1;*/
+  color: white;
+/*    flex-basis: 0;*/
+    padding: 16px;
+}
+
+.footer span {
+  white-space: pre-line; 
+}
+.footer .logo{
+  width: auto;
+}
+
+
+/*fonts and colors*/
+.poiret {
+  font-family: 'Poiret One', cursive;
+  font-size: 1.2em;
+}
+
+.blue_greenish {
+  color: rgb(0, 42, 61);
+}
+
+.montserrata {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 200;
+}
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+.tenor {
+  font-family: 'Tenor Sans', sans-serif;
+  font-size: 1em;
+}
+

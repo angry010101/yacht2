@@ -1,0 +1,191 @@
+<html><head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="styles/main.css">
+
+  <link rel="stylesheet" href="styles/index.css">
+
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:200,300,400,500|Montserrat:200,300,400,500|Poiret+One|Tenor+Sans" rel="stylesheet">
+	<!-- jquery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- carousel -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
+	<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
+
+	<script type="text/javascript">
+		var params = {
+  centerMode: true,
+  centerPadding: '60px',
+  slidesToShow: 3,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 3
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
+};
+	</script>
+</head>
+<body>
+<div class="grid-container">
+  <div class="header">
+
+
+  		<ul class="navigation poiret">
+        <li><img class="logo" src="images/logo.png"></li>
+  			<a><li>Поиск яхты</li></a>
+  			<a><li>О нас</li></a>
+  		</ul>
+  		<span class="contact poiret">
+  			+380661295869
+  		</span>
+  </div>
+
+
+  <div class="form">
+    	<div class="text montserrata blue_greenish">
+    		<h2>
+    		Lorem ipsum dolor sit amet,<br> consectetur adipiscing elit,
+    		<br>
+  		  Lorem ipsum dolor sit amet,<br> consectetur adipiscing elit,
+  		  </h2>
+    	</div>
+    	<div class="form_wrapper">
+    		<form id="form1" action="search" method="GET">
+    		<label class="montserrata">Куда вы хотите отправиться?</label><br><br>
+    		<select name="directions[]">
+
+         {% for d in directions %}
+          <option value="{{ d[1] }}">{{ d[1] }}</option>
+        {% endfor %}
+
+        </select><br>
+    		<br>
+    		<label class="montserrata">Тип яхты</label><br><br>
+    		<select name="yacht_type[]">
+
+         {% for d in yacht_types %}
+          <option value="{{ d[1] }}">{{ d[1] }}</option>
+        {% endfor %}
+        </select>
+        <br>
+    		<br>
+
+    		<div class="calendar">
+    			<label class="montserrata">Дата отправления</label>
+    			<label class="montserrata">Дата возвращения</label>
+    		</div>
+    		<br>
+    		<div class="calendar">
+  	  		<input class="date start" type="date" name="where">
+  	  		<input class="date end" type="date" name="where">
+  	  	</div>
+
+  	  	<button class="submit montserrata" form_id="form1">
+  	  		Поиск
+  	  	</button>
+    		</form>
+  	  </div>
+  </div>
+
+
+  <div class="suggestion">
+  	<h1 class="montserrata">Лучшие предложения</h1>
+  	<div class="carousel">
+
+         {% for yacht in yachts %}
+      <div class="item_wrapper">
+        <div class="item">
+          <div class="content_wrapper">
+            <div class="content">
+              <h5>{{ yacht[1] }}</h5>
+              <span>
+                {{ yacht[6] }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        {% endfor %}
+
+	</div>
+
+	<script type="text/javascript" src="lib/slick/slick.min.js"></script>
+	<script>
+		$(document).ready(function(){
+		  $('.carousel').not('.slick-initialized').slick(params);
+		});
+
+	</script>
+
+  </div>
+  <div class="reviews montserrat blue_greenish">
+  	<div class="review_wrapper">
+  		<div class="text">
+  			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  		</div>
+  		<div class="description">
+	  		<div class="authon">
+	  			Mr. Cat
+	  		</div>
+	  		<div class="rate">
+	  			<i class="fas fa-star"></i>
+	  			<i class="fas fa-star"></i>
+	  			<i class="fas fa-star"></i>
+	  			<i class="fas fa-star"></i>
+	  			<i class="fas fa-star"></i>
+	  		</div>
+  		</div>
+  	</div>
+  	<div class="review_wrapper">
+  		<div class="text">
+  			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  		</div>
+  		<div class="description">
+	  		<div class="authon">
+	  			Mr. Cat
+	  		</div>
+	  		<div class="rate">
+	  			<i class="fas fa-star"></i>
+	  			<i class="fas fa-star"></i>
+	  			<i class="fas fa-star"></i>
+	  			<i class="fas fa-star"></i>
+	  			<i class="fas fa-star"></i>
+	  		</div>
+  		</div>
+  	</div>
+  </div>
+  <div class="footer poiret">
+		<span>
+  			+380661295869
+  			+380661295869
+  			+380661295869
+  		</span>
+  		<img class="logo" src="images/logo_footer.png">
+  		<span>
+  			+380661295869
+  			+380661295869
+  			+380661295869
+  		</span>
+
+  </div>
+</div>
+
+</body></html>

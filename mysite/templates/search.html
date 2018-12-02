@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" href="styles/main.css">
+
+  <link rel="stylesheet" href="styles/search.css">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+	<!-- jquery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+<div class="grid-container">
+   <div class="header">
+
+
+      <ul class="navigation poiret">
+        <li><img class="logo" src="images/logo.png"></li>
+        <a><li>Поиск яхты</li></a>
+        <a><li>О нас</li></a>
+      </ul>
+      <span class="contact poiret">
+        +380661295869
+      </span>
+  </div>
+  <div class="header_content">
+    <div class="count"><div class="results_count">200</div> результатов</div>
+    <div class="sort">Сортировать по
+    <select>
+    <option value="rank">популярности</option>
+    <option value="chebyrachka">Чебурашка</option>
+    <option value="price">цене</option>
+    </select>
+    </div>
+  </div>
+
+
+  <div class="content">
+    <div class="filter">
+      <span>Активные фильтры</span>
+      <form>
+        <label>Направление</label>
+        <input>
+        <label>Тип яхты</label>
+        <input type="" name="">
+        <br>
+        <label>Дата отправления</label>
+        <input type="date" name="date_start">
+        <label>Дата возвращения</label>
+        <input type="date" name="date_finish">
+        <br>
+        <label>Бюджет</label>
+        <input type="range" name="money">
+        <label>Количество людей</label>
+        <input type="range" name="money">
+        <input type="reset" name="reset" value="Сбросить фильтры">
+      </form>
+    </div>
+    <div class="results">
+
+         {% for yacht in yachts %}
+      <div class="item_wrapper">
+          <div class="main">
+            <h3>{{ yacht[1]}}</h3>
+            <img class="img" src="images/search/yacht.jpg">
+          </div>
+          <div class="description">
+            <div class="avaliable">
+              today
+            </div>
+            <span>
+            {{  yacht[6]  }}
+            </span>
+            <div class="details">
+              <div class="price">
+                {{ yacht[4] }}
+              </div>
+              <button>
+                Rent
+              </button>
+            </div>
+          </div>
+      </div>
+ {% endfor %}
+
+      <div class="page_selector">
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+		<span>
+  			+380661295869
+  			+380661295869
+  			+380661295869
+  		</span>
+  		<img class="logo" src="images/logo_footer.png">
+  		<span>
+  			+380661295869
+  			+380661295869
+  			+380661295869
+  		</span>
+
+  </div>
+</div>
+</body>
+</html>
