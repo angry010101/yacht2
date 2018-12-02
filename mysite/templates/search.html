@@ -12,6 +12,28 @@
 	<!-- jquery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+  $( function() {
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 0,
+      max: 500,
+      values: [ 75, 300 ],
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+      }
+    });
+    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+  } );
+  </script>
+
 </head>
 <body>
 <div class="grid-container">
@@ -28,7 +50,7 @@
       </span>
   </div>
   <div class="header_content">
-    <div class="count"><div class="results_count">200</div> результатов</div>
+    <div class="count"><div class="results_count">{{ results_count }}</div> результатов</div>
     <div class="sort">Сортировать по
     <select>
     <option value="rank">популярности</option>
@@ -43,10 +65,22 @@
     <div class="filter">
       <span>Активные фильтры</span>
       <form>
-        <label>Направление</label>
-        <input>
-        <label>Тип яхты</label>
-        <input type="" name="">
+        <label>Направление</label><br>
+        <select name="directions[]">
+
+         {% for d in directions %}
+          <option value="{{ d[1] }}">{{ d[1] }}</option>
+        {% endfor %}
+
+        </select><br>
+
+        <label>Тип яхты</label><br>
+        <select name="yacht_type[]">
+        {% for d in yacht_types %}
+          <option value="{{ d[1] }}">{{ d[1] }}</option>
+        {% endfor %}
+        </select>
+
         <br>
         <label>Дата отправления</label>
         <input type="date" name="date_start">
@@ -54,7 +88,13 @@
         <input type="date" name="date_finish">
         <br>
         <label>Бюджет</label>
-        <input type="range" name="money">
+        <br>
+        <br>
+        <div id="slider-range"></div>
+
+        <p>
+        <input type="text" id="amount" readonly style="background: transparent; text-align: center; border:0; color:white; font-weight:bold;">
+        </p>
         <label>Количество людей</label>
         <input type="range" name="money">
         <input type="reset" name="reset" value="Сбросить фильтры">
@@ -77,7 +117,7 @@
             </span>
             <div class="details">
               <div class="price">
-                {{ yacht[4] }}
+                {{ yacht[2] }}
               </div>
               <button>
                 Rent

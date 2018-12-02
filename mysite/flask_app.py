@@ -15,7 +15,8 @@ def hello_world():
 @app.route('/search')
 def search():
     conn = sqlite3.connect('mysite/example.db')
-    return render_template("search.html",yachts=getYachtsFilter(conn))
+    y = getYachtsFilter(conn)
+    return render_template("search.html",yachts=y,directions=getDirections(conn),yacht_types=getYachtTypes(conn),results_count=len(y))
 
 @app.route('/yacht')
 def yacht():
