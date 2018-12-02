@@ -4,6 +4,32 @@
 	font-size: 120%;
 }
 
+/*fonts and colors*/
+.poiret {
+  font-family: 'Poiret One', cursive;
+  font-size: 1.2em;
+}
+
+.blue_greenish {
+  color: rgb(0, 42, 61);
+}
+
+.montserrata {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 200;
+}
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+.tenor {
+  font-family: 'Tenor Sans', sans-serif;
+  font-size: 1em;
+}
+
+
 
 
 .header { 
@@ -20,10 +46,10 @@
 }
 
 .header .logo {
-	width: 22.5vmin;
+
+	width: 21vmin;
 	position: absolute;
   bottom: 5%;
-  margin-left: 30px;
 }
 
 .header .contact {
@@ -35,9 +61,13 @@
   text-align: right;
 }
 
-
+ul a:first-child {
+	display: inline-flex;
+	justify-content: flex-start;
+}
 
 .navigation { 
+	height: 50%;
   display: flex;
   flex-wrap: nowrap;
   text-decoration: none;
@@ -65,55 +95,56 @@
   background: black;
 }
 
+  .navigation img {
+  	flex-grow: 1;
+  }
+
+ .navigation a:first-child {
+ 	flex-grow: 0.4;
+ }
+
+
+
+
+button {
+	background: transparent;
+	color: white;
+}
+
+
 /* footer */
 
 .footer {
+	font-size: 1.1em;
+	line-height: 35px;
+	font-weight: 100;
+	color: white;
   grid-area: footer;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   text-align: center;
-  background: url(../images/sea_footer.jpg);
+  background: url(../images/footer.jpg);
   background-size:cover;
 }
 
-.footer * {
-/*  flex-grow: 1;*/
-  color: white;
-/*    flex-basis: 0;*/
-    padding: 16px;
-}
+
 
 .footer span {
+	width: 25%;
+	text-align: left;
   white-space: pre-line; 
 }
-.footer .logo{
+
+
+.footer span:last-child {
+	text-align: right;
+}
+
+.footer div{
+ margin-left: 8%;
+ margin-right: 8%;	
   width: auto;
 }
 
-
-/*fonts and colors*/
-.poiret {
-  font-family: 'Poiret One', cursive;
-  font-size: 1.2em;
-}
-
-.blue_greenish {
-  color: rgb(0, 42, 61);
-}
-
-.montserrata {
-  font-family: 'Montserrat Alternates', sans-serif;
-  font-weight: 200;
-}
-
-.montserrat {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-}
-
-.tenor {
-  font-family: 'Tenor Sans', sans-serif;
-  font-size: 1em;
-}
 

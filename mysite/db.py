@@ -70,15 +70,45 @@ def init_db():
 def drop_db():
     conn = sqlite3.connect('example.db')
     c = conn.cursor()
-    r = c.execute("""DROP TABLE 'table_yachts'""")
-    r = c.execute("""DROP TABLE 'table_orders'""")
-    r = c.execute("""DROP TABLE 'table_services'""")
-    r = c.execute("""DROP TABLE 'table_photos'""")
-    r = c.execute("""DROP TABLE 'table_built'""")
-    r = c.execute("""DROP TABLE 'table_order_service'""")
-    r = c.execute("""DROP TABLE 'table_yacht_built'""")
+    try:
+        r = c.execute("""DROP TABLE 'table_yacht_types'""")
+    except:
+        print("yacht_Types isnot dropped")
+        pass
+    try:
+        r = c.execute("""DROP TABLE 'table_directions'""")
+    except:
+        pass
+    try:
+        r = c.execute("""DROP TABLE 'table_yachts'""")
+    except:
+        pass
+    try:
+        r = c.execute("""DROP TABLE 'table_orders'""")
+    except:
+        pass
+    try:
+        r = c.execute("""DROP TABLE 'table_services'""")
+    except:
+        pass
+    try:
+        r = c.execute("""DROP TABLE 'table_photos'""")
+    except:
+        pass
+    try:
+        r = c.execute("""DROP TABLE 'table_built'""")
+    except:
+        pass
+    try:
+        r = c.execute("""DROP TABLE 'table_order_service'""")
+    except:
+        pass
+    try:
+        r = c.execute("""DROP TABLE 'table_yacht_built'""")
+    except:
+        pass
 
-    r = c.execute("""DROP TABLE 'table_directions'""")
+
     conn.commit()
     conn.close()
     return "OK"
@@ -113,10 +143,12 @@ def add_yacht_types():
     conn.commit()
     conn.close()
     return "OK"
-#print(init_db())
-#print(add_yacht_types())
-for i in range(0,10):
-    print(add_data())
-    print(add_cities())
+def init():
+    print(init_db())
+    print(add_yacht_types())
+    for i in range(0,10):
+        print(add_data())
+        print(add_cities())
+init()
 print("OK")
 #drop_db()

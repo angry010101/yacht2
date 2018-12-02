@@ -48,7 +48,7 @@
 
 
   		<ul class="navigation poiret">
-        <li><img class="logo" src="images/logo.png"></li>
+        <a><li><img class="logo" src="images/logo.png"></li></a>
   			<a><li>Поиск яхты</li></a>
   			<a><li>О нас</li></a>
   		</ul>
@@ -66,42 +66,37 @@
   		  Lorem ipsum dolor sit amet,<br> consectetur adipiscing elit,
   		  </h2>
     	</div>
-    	<div class="form_wrapper">
-    		<form id="form1" action="search" method="GET">
-    		<label class="montserrata">Куда вы хотите отправиться?</label><br><br>
-    		<select name="directions[]">
+    	
+    		<form id="form1" class="form_wrapper" action="search" method="GET">
+    		<label class="montserrata">Куда вы хотите отправиться?</label>
+    		<select class="blue_greenish" name="directions[]">
 
          {% for d in directions %}
           <option value="{{ d[1] }}">{{ d[1] }}</option>
         {% endfor %}
 
-        </select><br>
-    		<br>
-    		<label class="montserrata">Тип яхты</label><br><br>
-    		<select name="yacht_type[]">
+        </select>
+    		<label class="montserrata ">Тип яхты</label>
+    		<select name="yacht_type[]" class="blue_greenish">
 
          {% for d in yacht_types %}
           <option value="{{ d[1] }}">{{ d[1] }}</option>
         {% endfor %}
         </select>
-        <br>
-    		<br>
 
     		<div class="calendar">
     			<label class="montserrata">Дата отправления</label>
     			<label class="montserrata">Дата возвращения</label>
     		</div>
-    		<br>
     		<div class="calendar">
-  	  		<input class="date start" type="date" name="where">
-  	  		<input class="date end" type="date" name="where">
+  	  		<input class="date start blue_greenish" type="date"  name="where">
+  	  		<input class="date end blue_greenish" type="date" name="where">
   	  	</div>
 
-  	  	<button class="submit montserrata" form_id="form1">
+  	  	<button class="montserrata" form_id="form1">
   	  		Поиск
   	  	</button>
     		</form>
-  	  </div>
   </div>
 
 
@@ -173,16 +168,18 @@
   	</div>
   </div>
   <div class="footer poiret">
-		<span>
-  			+380661295869
-  			+380661295869
-  			+380661295869
+		<span>facebook
+        twitter
+        instagram
   		</span>
-  		<img class="logo" src="images/logo_footer.png">
-  		<span>
+  		<div>
+        <img class="logo" src="images/logo_footer.png">
+        <div>2012-2019</div>
+      </div>
+  		<span>+380661295869
   			+380661295869
-  			+380661295869
-  			+380661295869
+  			ул. Кого-то 35, 
+        Бердичев
   		</span>
 
   </div>

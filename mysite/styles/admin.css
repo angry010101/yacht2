@@ -1,0 +1,60 @@
+.grid-container {
+  display: grid;
+  align-items: stretch;
+  grid-template-columns: 32px 1fr 2fr 32px;
+  grid-template-rows: 19vmin auto auto;
+  grid-template-areas: "header header header header"  "content content content content" "footer footer footer footer";
+}
+
+
+
+.content {
+	display: flex;
+	grid-area: content;
+	background: #2a3e63;
+
+    justify-content: center;
+}
+
+.content .filter{
+	padding: 8px;
+	margin-right: 16px;
+	background: url(../images/search/filters_background.jpg);
+	
+    padding: 18px;
+
+    width: 238px;
+    height: 426px;
+}
+
+.form_wrapper{
+	padding: 24px;
+	width: 80%;background: #d4d7df;
+}
+
+.form{
+	text-align: center;
+}
+.form h1{
+	font-size: 24pt;
+	color: white;
+}
+.form input{
+	width: 80%;
+	background: url(../images/sea_search.jpg);
+	background-position: -4px -4px;
+	height: 42px;
+	font-size: 22pt;
+	padding: 4px;
+	margin-bottom: 32px;
+	color: blue;
+}
+
+.form button{
+	width: 50%;
+	height: 42px;
+	font-size: 22pt;
+	padding: 4px;
+	margin-bottom: 48px;
+	color: black;
+}

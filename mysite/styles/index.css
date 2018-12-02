@@ -3,7 +3,7 @@
   display: grid;
   align-items: stretch;
   grid-template-columns: 1fr 3fr 3fr 1fr;
-  grid-template-rows: 19vmin 81vmin 2fr auto 1fr;
+  grid-template-rows: 19vmin 81vmin 2fr 50vmin 15%;
   grid-template-areas: "header header header header" "form form form form" "suggestion suggestion suggestion suggestion" "reviews reviews reviews reviews" "footer footer footer footer";
 }
 
@@ -11,39 +11,14 @@
 .reviews { grid-area: reviews; }
 
 
-.navigation { 
-  display: flex;
-  flex-wrap: nowrap;
-  text-decoration: none;
-  list-style-type: none;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-    align-self: flex-end;
-    text-align: center;
-    flex: 3;
-    background: #3f506b;
-  }
-  .navigation img {
-  	flex-grow: 1;
-  }
-.navigation a {
-  display: inline;
-  flex-grow: 1;
-  padding: 8px;
-    flex-basis: 0;
-    color: white;
-   }
 
-.navigation a:hover{
-  background: black;
-}
 
 
 
 /* form css */
 
 .form { 
+	
   color: white;
   display: flex;
   grid-area: form;
@@ -55,7 +30,7 @@
 
 .text {
   max-height: 100%;
-  width: 30%;
+  width: 36%;
   text-align: right;
   font-size: 0.9em;
 }
@@ -64,61 +39,72 @@ h2 {
   font-weight: 400;
   line-height: 1.5em;
 }
-
+#form1 {
+	margin: 0;
+}
 .form_wrapper {
-  height: 100%;
+	padding-left: 3%;
+	padding-right: 3%;
+/*	padding-bottom: 6.25%;
+	padding-top: 6.25%;*/
+  height: 81vmin;
   width: 30%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  align-items: center;
   background: #2b3454;
   text-align: left;
   opacity: 0.8;
 }
 
 .form .calendar {
+	width: 100%;
   display: flex;
-}
-.form .calendar *{
-  flex: 1;
+  justify-content: space-between;
 }
 
 .form label{
+	text-align: left;
+	width: 100%;
   padding-left: 0;
   font-size: 14pt;
 }
 
 
 .form .form_wrapper input{
-  width: 100%;
-  color: black;
+	height: 7.2%;
+	border-width: 0;
+	border-radius: 4px;
+	background-image: url("../images/shortbar.png");
+	background-size: cover;
+  width: 48%;
+
 }
 
 .form .form_wrapper select{
+	height: 7.2%;
+	border-width: 0;
+	border-radius: 4px;
+	background-image: url("../images/longbar.png");
   width: 100%;
-  color: black;
-}
+ }
 
-.form .submit{
-  margin: 8px auto;
+.form button{
+	opacity: 80%;
+  vertical-align: middle;
     display: block;
     border: 3px solid white;
+
     border-radius: 12px;
-    min-width: 102px;
-  padding: 8px;
-  color: black;
-}
-.form .form_wrapper .date{
-  flex: 1;
+    height: 8%;
+    width: 42.5%;
 }
 
 .form .form_wrapper .date .end{
   float: right;
 }
 
-form {
- margin: 32px;
-}
 
 
 /*suggestions*/
@@ -184,9 +170,9 @@ h1 {
 }
 /* reviews */
 .reviews {
-  padding: 16px;
   background: #d4d7e0;
   display: flex;
+  font-size: 1em;
 
   align-items: center;
     justify-content: space-around;
@@ -201,13 +187,12 @@ h1 {
 .review_wrapper .text{
   width: 100%;
   text-align: left;
-  padding: 6px
+  margin-bottom: 7.4%;
 }
 
 .reviews .review_wrapper .description{
   display: flex;
   justify-content: space-between;
-  margin: 6px;
 }
 .reviews .review_wrapper .description .author{
 
