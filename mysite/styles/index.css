@@ -3,7 +3,7 @@
   display: grid;
   align-items: stretch;
   grid-template-columns: 1fr 3fr 3fr 1fr;
-  grid-template-rows: 19vmin 81vmin 2fr 50vmin 15%;
+  grid-template-rows: 19vmin 81vmin 2fr 50vmin auto;
   grid-template-areas: "header header header header" "form form form form" "suggestion suggestion suggestion suggestion" "reviews reviews reviews reviews" "footer footer footer footer";
 }
 
@@ -17,8 +17,7 @@
 
 /* form css */
 
-.form { 
-	
+.form {	
   color: white;
   display: flex;
   grid-area: form;
@@ -90,8 +89,7 @@ h2 {
   width: 100%;
  }
 
-.form button{
-	opacity: 80%;
+.form .button{
   vertical-align: middle;
     display: block;
     border: 3px solid white;

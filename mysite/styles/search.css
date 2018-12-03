@@ -1,55 +1,138 @@
 .grid-container {
+	font-size: 80%;
   display: grid;
   align-items: stretch;
-  grid-template-columns: 32px 1fr 2fr 32px;
-  grid-template-rows: 19vmin 10vmin 2fr auto;
-  grid-template-areas: "header header header header" "header_content header_content header_content header_content" "content content content content" "footer footer footer footer";
+ grid-template-columns: 1fr 3fr 3fr 1fr;
+  grid-template-rows: 19vmin auto auto;
+  grid-template-areas: "header header header header" "content content content content" "footer footer footer footer";
 }
 
-
+.navigation {
+	font-size: 1.5em;
+}
+.footer {
+	font-size: 1.35em;
+}
 
 .header_content {
+	width: 100%;
+
+    padding: 18px 0;
+    height: 74px;
 	display: flex;
-	padding: 16px;
+	align-items: center;
+	justify-content: space-between;
 	grid-area: header_content;
-	align-content: center;
 	text-align: center;
-	    background: #2a3e63;
+	background: #2a3e63;
 	color: white;
 }
 
-.header_content .count{
+.header_content .count,.sort{
 	flex: 1;
-	margin-left: 12px;
+	text-align: left;
+	height: 100%;
+	display: flex;
+	align-items: center;
+
+}
+
+.sort {
+	justify-content: flex-end;
 }
 
 
-.header_content .sort{
-	flex: 1;
+select {
+	display: inline-block;
+	height: 28px;
+	background-image: url(../images/search/popularitybar.png);
+	border-radius: 4px;
 }
+
+.results_count{
+	margin-right: 5px;
+	height: 26px;
+	background: url(../images/search/numberrbar.png);
+    display: inline-block;
+    background-position: 50% 50%;
+    border-radius: 6px;
+    width: 32px;
+    text-align: center;
+
+}
+
 
 .content {
 	display: flex;
+	padding-right: 9%;
+	padding-left: 9%;
 	grid-area: content;
 	background: #2a3e63;
 
-    justify-content: center;
+    justify-content: space-between;
 }
 
-.content .filter{
-	padding: 8px;
-	margin-right: 16px;
+.filter{
+	position: sticky;
+	top: 0;
+	flex-direction: column;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
 	background: url(../images/search/filters_background.jpg);
 	color: white;
-    padding: 18px;
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    font-size: 1em;
+    width: 25%;
+    height: 85vmin;
+}
 
-    width: 238px;
-    height: 426px;
+
+form select, input[wtype="wide"] {
+	height: 30px;
+	width: 100%;
+	border-width: 0;
+	border-radius: 4px;
+	background-image: url("../images/search/widebar.jpg");
+	background-size: cover;
+	font-family: 'Poiret One', cursive;
+  font-size: 1.3em;
+}
+
+.button {
+	height: 5%;
+	border-radius: 4px;
+	align-self: center;
+}
+
+ .results{
+	width: 65%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+
 }
 
 .page_selector{
-	margin-bottom: 16px;
+	width: fit-content;
+	align-self: flex-end;
+}
+
+
+.page_selector{
+	background: transparent;
 	color: white;
+	border-radius: 8px;
+	opacity: 0.8;
+	border-width: 0.5px;
+	border: solid;
+	align-self: flex-end;
+	margin-bottom: 20px;
 }
 
 
@@ -58,13 +141,10 @@
 	margin: 0;
 	padding: 0;
 	   height: 22px;
-    border-radius: 8px;
-    background: #325d80;
     padding: 8px;
 }
 
 .page_selector ul li{
-
 	display: inline-block;
 	margin: 0;
 	padding: 0;
@@ -72,68 +152,19 @@
     padding-right: 8px;
 }
 
-.content .filter input{
-	display: block;
-	width: 100%;
-	margin: 6px 0;
 
-}
-.content .results{
-	align-content: center;
-}
-
-.content .results .page_selector{
-	float: right;
-}
-
-.content .results .item_wrapper{
-	background: #d4d7e0;
-	padding: 8px 16px;
-	max-width: 600px;
-	margin: 0 auto;
-	display: flex;
-	margin-bottom: 32px;
+ .item_wrapper{
+  color: rgb(0, 42, 61);
+  height: 33%;
+  width: 95%;
+  background: #d4d7e0;
+  margin: 0;
+  display: grid;
+  align-items: stretch;
+ grid-template-columns: 6fr 3fr 3fr;
+  grid-template-rows: 2fr 3fr 3fr 1fr;
+  grid-template-areas: "item_header item_header item_header" "text text text" "detail detail detail" ". . .";
+  padding-right: 5%;
+  margin-bottom: 3%;
 }
 
-.results_count{
-	background: url(../images/search/numberrbar.png);
-    display: inline-block;
-    background-position: 50% 50%;
-    border-radius: 6px;
-    padding: 4px;
-}
-
-.content .results .item_wrapper *{
-	margin: 0;
-	padding: 0;
-}
-
-.content .results .main{
-	flex: 1;
-	margin-right: 8px;
-}
-
-.content .results .description{
-	flex: 1;
-}
-
-.content .results .description .avaliable{
-	padding: 8px 0;
-}
-
-.content .results .item_wrapper h3{
-	padding: 8px 0;
-}
-
-.content .results .item_wrapper .main .img{
-	width: 90%;
-}
-
-.content .results .item_wrapper .description .details{
-	padding-top: 8px;
-	display: flex;
-}
-
-.content .results .item_wrapper .description .details *{
-	flex: 1;
-}

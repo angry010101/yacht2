@@ -1,6 +1,7 @@
 import sqlite3
 from constants import *
 import random
+
 def init_db():
     conn = sqlite3.connect('example.db')
     c = conn.cursor()
@@ -113,10 +114,10 @@ def drop_db():
     conn.close()
     return "OK"
 
-def add_data():
+def add_data(i=0):
     conn = sqlite3.connect('example.db')
     c = conn.cursor()
-    item = [None,"Doom" + str(random.randint(1, 50)),random.uniform(10000.5, 19000),random.uniform(0,5),random.randint(10, 50),random.randint(0, 1),"Lorem ipsum dolor sit amend this yacht the best","https://google.com"]
+    item = [None,"Doom" + str(i),int(random.uniform(10000.5, 19000)),random.uniform(0,5),random.randint(10, 50),random.randint(0, 1),"Lorem ipsum dolor sit amend this yacht the best","https://google.com"]
     c.execute('insert into table_yachts values (?,?,?,?,?,?,?,?)', item)
     conn.commit()
     conn.close()
@@ -125,7 +126,7 @@ def add_data():
 def add_cities():
     conn = sqlite3.connect('example.db')
     c = conn.cursor()
-    item = [None,"Kiyov" + str(random.randint(1, 50)),random.uniform(10000.5, 19000)]
+    item = [None,"Kiyov" + str(random.randint(1, 50)),int(random.uniform(10000.5, 19000))]
     c.execute('insert into table_directions values (?,?,?)', item)
     conn.commit()
     conn.close()
@@ -147,8 +148,11 @@ def init():
     print(init_db())
     print(add_yacht_types())
     for i in range(0,10):
-        print(add_data())
+        #print(add_data())
         print(add_cities())
 init()
 print("OK")
+for i in range(0,100):
+    print(add_data(i))
+
 #drop_db()

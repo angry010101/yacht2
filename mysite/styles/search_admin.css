@@ -1,0 +1,150 @@
+.grid-container {
+	font-size: 80%;
+  display: grid;
+  align-items: stretch;
+ grid-template-columns: 1fr 3fr 3fr 1fr;
+  grid-template-rows: 19vmin auto auto;
+  grid-template-areas: "header header header header" "content content content content" "footer footer footer footer";
+}
+
+.navigation {
+	font-size: 1.5em;
+}
+.footer {
+	font-size: 1.35em;
+}
+
+.header_content {
+	width: 100%;
+	height: 20vmin;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	grid-area: header_content;
+	text-align: center;
+	background: #2a3e63;
+	color: white;
+}
+
+.header_content .count,.sort{
+	flex: 1;
+	text-align: left;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	
+}
+
+.sort {
+	justify-content: flex-end;
+}
+
+
+select {
+	margin-left: 5px;
+	display: inline-block;
+	height: 30%;
+	background-image: url(../images/search/popularitybar.png);
+	border-radius: 4px;
+}
+
+.results_count{
+	margin-right: 5px;
+	height: 52%;
+	background: url(../images/search/numberrbar.png);
+    display: inline-block;
+    background-position: 50% 50%;
+    border-radius: 6px;
+    
+}
+
+
+.content {
+	display: flex;
+	padding-right: 9%;
+	padding-left: 9%;
+	grid-area: content;
+	background: #2a3e63;
+
+    justify-content: space-between;
+}
+
+.filter{
+	position: sticky;
+	top: 0;
+	flex-direction: column;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+	background: url(../images/search/filters_background.jpg);
+	color: white;
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    font-size: 1em;
+    width: 25%;
+    height: 85vmin;
+}
+
+
+form select, input[wtype="wide"] {
+	height: 5%;
+	width: 100%;
+	border-width: 0;
+	border-radius: 4px;
+	background-image: url("../images/search/widebar.jpg");
+	background-size: cover;
+	font-family: 'Poiret One', cursive;
+  font-size: 1.5em;
+}
+
+.button {
+	height: 5%;
+	border-radius: 4px;
+	align-self: center;
+}
+
+ .results{
+	width: 65%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+
+}
+
+.page_selector{
+	width: fit-content;
+	align-self: flex-end;
+}
+
+
+.page_selector{
+	background: transparent;
+	color: white;
+	border-radius: 8px;
+	opacity: 0.8;
+	border-width: 0.5px;
+	border: solid;
+	align-self: flex-end;
+	margin-bottom: 20px;
+}
+
+
+.page_selector ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	   height: 22px;
+    padding: 8px;
+}
+
+.page_selector ul li{
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	    padding-left: 8px;
+    padding-right: 8px;
+}

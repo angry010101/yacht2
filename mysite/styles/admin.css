@@ -6,55 +6,49 @@
   grid-template-areas: "header header header header"  "content content content content" "footer footer footer footer";
 }
 
+.content h1 {
+	font-size: 1.6em;
+	font-weight: 400;
+	margin: 0;
 
+}
 
 .content {
+	height: 81vmin;
 	display: flex;
 	grid-area: content;
 	background: #2a3e63;
-
     justify-content: center;
 }
 
-.content .filter{
-	padding: 8px;
-	margin-right: 16px;
-	background: url(../images/search/filters_background.jpg);
-	
-    padding: 18px;
 
-    width: 238px;
-    height: 426px;
-}
-
-.form_wrapper{
-	padding: 24px;
-	width: 80%;background: #d4d7df;
+.form{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	height: 100%;
+	width: 60%;
+	background: #d4d7df;
 }
 
 .form{
 	text-align: center;
 }
-.form h1{
-	font-size: 24pt;
-	color: white;
-}
+
 .form input{
-	width: 80%;
-	background: url(../images/sea_search.jpg);
-	background-position: -4px -4px;
-	height: 42px;
-	font-size: 22pt;
+	width: 68%;
+	background: url("../images/bar_admin.png");
+	background-size: contain;
+	height: 9%;
 	padding: 4px;
-	margin-bottom: 32px;
-	color: blue;
+	font-size: 1.2em;
+	font-family: Poiret One, sans-serif;
 }
 
 .form button{
-	width: 50%;
-	height: 42px;
-	font-size: 22pt;
-	padding: 4px;
-	margin-bottom: 48px;
-	color: black;
+	margin-bottom: 8%;
+	width: 28%;
+	height: 8%;
 }
+
