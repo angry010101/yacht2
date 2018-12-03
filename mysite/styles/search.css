@@ -168,3 +168,10 @@ form select, input[wtype="wide"] {
   margin-bottom: 3%;
 }
 
+.popup_text{
+    font-size: 18pt;margin: 26px 0; margin-top: 100px;
+}
+
+.button_padding{
+    padding: 16px 26px;
+}
