@@ -1,63 +1,68 @@
 ﻿
 .grid-container {
+	font-size: 110%;
   display: grid;
   align-items: stretch;
   grid-template-columns: 1fr 3fr 3fr 1fr;
-  grid-template-rows: 19vmin 81vmin 2fr 50vmin auto;
+  grid-template-rows: auto 81vmin 2fr 50vmin auto;
   grid-template-areas: "header header header header" "form form form form" "suggestion suggestion suggestion suggestion" "reviews reviews reviews reviews" "footer footer footer footer";
 }
-
-
-.reviews { grid-area: reviews; }
-
-
-
-
-
 
 /* form css */
 
 .form {	
+	background-attachment: fixed;
   color: white;
   display: flex;
+   background-size: 100%;
   grid-area: form;
   justify-content: space-evenly;
-  background-image: url(../images/sea_search.jpg);
-  background-size:100% 81vmin;
+  background-image: url(../images/back.jpg);
   align-items: center;
 }
 
 .text {
+	background: #ffffff8f;
+	border-radius: 10px;
+	border-left: rgb(01, 15, 48) solid 7px;
+	border-width: 6px;
   max-height: 100%;
   width: 36%;
-  text-align: right;
-  font-size: 0.9em;
+  text-align: left;
+  font-size: 0.8em;
 }
 
 h2 {
-  font-weight: 400;
+	
+  font-weight: 500;
   line-height: 1.5em;
 }
 #form1 {
 	margin: 0;
 }
 .form_wrapper {
+	color: #081c3d;
+	font-weight: 500;
+	border: #010f30 solid 4px;
+	border-radius: 6px;
 	padding-left: 3%;
 	padding-right: 3%;
 /*	padding-bottom: 6.25%;
 	padding-top: 6.25%;*/
-  height: 81vmin;
+  height: 68vmin;
   width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background: #2b3454;
+  background: #3e1f0d00;
   text-align: left;
-  opacity: 0.8;
+   background: linear-gradient(to top, #210f00f2, rgba(231, 223, 203, 0));
 }
 
 .form .calendar {
+	
+	color: white;
 	width: 100%;
   display: flex;
   justify-content: space-between;
@@ -67,27 +72,10 @@ h2 {
 	text-align: left;
 	width: 100%;
   padding-left: 0;
-  font-size: 14pt;
+  font-size: 1em;
 }
 
 
-.form .form_wrapper input{
-	height: 7.2%;
-	border-width: 0;
-	border-radius: 4px;
-	background-image: url("../images/shortbar.png");
-	background-size: cover;
-  width: 48%;
-
-}
-
-.form .form_wrapper select{
-	height: 7.2%;
-	border-width: 0;
-	border-radius: 4px;
-	background-image: url("../images/longbar.png");
-  width: 100%;
- }
 
 .form .button{
   vertical-align: middle;
@@ -95,15 +83,23 @@ h2 {
     border: 3px solid white;
 
     border-radius: 12px;
-    height: 8%;
+    height: 50px;
     width: 42.5%;
 }
+
+
 
 .form .form_wrapper .date .end{
   float: right;
 }
 
-
+.text2 {
+	padding: 10px;
+	background: transparent;
+	border-bottom: solid 1px;
+	border-top: solid 1px;
+	border-right: solid 1px;
+}
 
 /*suggestions*/
 
@@ -168,6 +164,7 @@ h1 {
 }
 /* reviews */
 .reviews {
+	grid-area: reviews;
   background: #d4d7e0;
   display: flex;
   font-size: 1em;
@@ -177,7 +174,7 @@ h1 {
 }
 
 .review_wrapper{
-    padding: 48px;
+  font-size: 1.1em;
     width: 28%;
     text-align: center;
 }
@@ -191,11 +188,85 @@ h1 {
 .reviews .review_wrapper .description{
   display: flex;
   justify-content: space-between;
-}
-.reviews .review_wrapper .description .author{
-
-}
-.reviews .review_wrapper .description .rate{
-    
+  width: 100%;
 }
 
+.rate {
+	color: #b86c1f;
+}
+
+
+@media all and (max-device-width: 800px) {
+	.body{
+		font-size: 150%;
+	}
+	.text {
+		width: 43%;
+	}
+	.form_wrapper {
+		width: 40%;
+	} 
+
+}
+
+
+@media all and (max-device-width: 500px) {
+	.grid-container {
+		display: block;
+		font-size: 200%;
+	}
+
+	.body {
+		font-size: 200%;
+	}
+	.form {
+		flex-direction: column;
+		background-size: 100% 515px;
+	}
+
+	.text {
+		width: 90%;
+		grid-column: 1/ span 4;
+		text-align: center;
+	}
+
+	.form_wrapper {
+		width: 94%;
+		height: 820px;
+	}
+
+	.form .form_wrapper input{
+		width: 44%;
+		height: 80px;
+	}
+
+.form .form_wrapper select{
+  width: 85%;
+  height: 80px;
+ }
+
+ .form label{
+	width: 85%;
+
+}
+
+.form .calendar {
+	width: 85%;
+}
+
+.calendar .label {
+	width: 85%;
+}
+
+.form .button {
+	height: 80px;
+}
+
+	.reviews {
+		flex-direction: column;
+	}
+
+	.review_wrapper {
+		width: 85%;
+	}
+}

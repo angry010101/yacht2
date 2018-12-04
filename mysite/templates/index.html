@@ -48,28 +48,24 @@
 
 
   		<ul class="navigation poiret">
-        <a><li><img class="logo" src="images/logo.png"></li></a>
-  			<a href="/search"><li>поиск яхты</li></a>
-  			<a href="/about"><li>о нас</li></a>
+        <li><a><img class="logo" src="images/logo.png"></a></li>
+  			<li><a href="/search">поиск яхты</a></li>
+  			<li><a href="/about">о нас</a></li>
+        <li class="poiret">+380661295869</li>
   		</ul>
-  		<span class="contact poiret">
-  			+380661295869
-  		</span>
   </div>
 
 
   <div class="form">
     	<div class="text montserrata blue_greenish">
     		<h2>
-    		Lorem ipsum dolor sit amet,<br> consectetur adipiscing elit,
-    		<br>
-  		  Lorem ipsum dolor sit amet,<br> consectetur adipiscing elit,
+    		Lorem ipsum dolor sit amet,consectetur adipiscing elit, Lorem ipsum dolor sit amet,consectetur adipiscing elit.
   		  </h2>
     	</div>
 
     		<form id="form1" class="form_wrapper" action="search" method="GET">
     		<label class="montserrata">Куда вы хотите отправиться?</label>
-    		<select class="blue_greenish" name="directions[]">
+    		<select  name="directions[]">
 
          {% for d in directions %}
           <option value="{{ d[1] }}">{{ d[1] }}</option>
@@ -77,7 +73,7 @@
 
         </select>
     		<label class="montserrata ">Тип яхты</label>
-    		<select name="yacht_type[]" class="blue_greenish">
+    		<select name="yacht_type[]">
 
          {% for d in yacht_types %}
           <option value="{{ d[1] }}">{{ d[1] }}</option>
@@ -89,13 +85,14 @@
     			<label class="montserrata">Дата возвращения</label>
     		</div>
     		<div class="calendar">
-  	  		<input class="date start blue_greenish" type="date"  name="where">
-  	  		<input class="date end blue_greenish" type="date" name="where">
+  	  		<input class="date start" type="date"  name="date_start" value="2018-08-11">
+  	  		<input class="date end" type="date" name="where" value="2018-09-11">
   	  	</div>
 
   	  	<button class="montserrata button" form_id="form1">
   	  		Поиск
   	  	</button>
+
     		</form>
   </div>
 
@@ -107,11 +104,11 @@
          {% for yacht in yachts %}
       <div class="item_wrapper">
         <div class="item">
-          <div class="content_wrapper">
+          <div class="content_wrapper" style="background: url(../images/yacht{{ (yacht[0]%10) + 1}}.jpg); background-size: cover;">
             <div class="content">
               <h5>{{ yacht[1] }}</h5>
-              <span>
-                {{ yacht[6] }}
+              <span style="color: white">
+                {{ yacht[7] }}
               </span>
             </div>
           </div>
@@ -133,7 +130,7 @@
   </div>
   <div class="reviews montserrat blue_greenish">
   	<div class="review_wrapper">
-  		<div class="text">
+  		<div class="text text2">
   			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
   		</div>
   		<div class="description">
@@ -150,7 +147,7 @@
   		</div>
   	</div>
   	<div class="review_wrapper">
-  		<div class="text">
+  		<div class="text text2">
   			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
   		</div>
   		<div class="description">

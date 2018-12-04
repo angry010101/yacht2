@@ -117,7 +117,7 @@ def drop_db():
 def add_data(i=0):
     conn = sqlite3.connect('example.db')
     c = conn.cursor()
-    item = [None,"Doom" + str(i),int(random.uniform(10000.5, 19000)),random.uniform(0,5),random.randint(10, 50),random.randint(0, 1),"Lorem ipsum dolor sit amend this yacht the best","https://google.com"]
+    item = [None,"Doom" + str(i),int(random.uniform(10000.5, 19000)),random.uniform(0,5),random.randint(10, 50),random.randint(0, 1),"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.","Lorem ipsum dolor sit amet, consectetur adipiscing elit"]
     c.execute('insert into table_yachts values (?,?,?,?,?,?,?,?)', item)
     conn.commit()
     conn.close()

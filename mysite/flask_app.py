@@ -16,11 +16,78 @@ def hello_world():
 
 @app.route('/admin', methods=['GET','POST'])
 def admin():
+    conn = sqlite3.connect('mysite/example.db')
     if request.method == 'POST':
-        return render_template("search.html")
+        conn = sqlite3.connect('mysite/example.db')
+        date_start = request.args.get('date_start')
+        if date_start is None:
+            date_start = 0
+        date_finish = request.args.get('date_finish')
+        if date_finish is None:
+            date_finish = 0
+        yacht_type = request.args.get('yacht_type[]')
+        if yacht_type is None:
+            yacht_type = 0
+        yacht_seat = request.args.get('yacht_seat')
+        if yacht_seat is None:
+            yacht_seat = 0
+        price_finish = request.args.get('price_finish')
+        if price_finish is None:
+            price_finish = 99999999
+        price_start = request.args.get('price_start')
+        if price_start is None:
+            price_start = 0
+
+        direction = request.args.get('directions[]')
+        if direction is None:
+            direction = 0
+
+        offset = request.args.get('offset')
+        if offset is None:
+            offset = 0
+
+        order = request.args.get('order')
+        if order is None:
+            order = "rank"
+        import math
+
+        y,max_price,results_count = getYachtsFilter(conn,offset,date_start,date_finish,yacht_type,yacht_seat,price_start,price_finish,order)
+        if max_price is None:
+            max_price = 99999
+
+        pagination_count =math.ceil(results_count/10)
+        params = [date_finish,date_start,yacht_seat,yacht_type,price_start,price_finish,direction,pagination_count,int(math.ceil(int(offset)/10)),order]
+        y,max_price,results_count = getYachtsFilter(conn,offset,date_start,date_finish,yacht_type,yacht_seat,price_start,price_finish)
+
+        return render_template("search_admin.html",yachts=y,directions=getDirections(conn),yacht_types=getYachtTypes(conn),results_count=results_count,max_price=max_price,params=params)
     else:
         return render_template("admin.html")
 
+
+@app.route('/secret')
+def secret():
+    f=open("secret.txt", "r")
+    if f.mode == 'r':
+        contents =f.read()
+    return contents
+
+@app.route('/write',methods=['POST'])
+def write():
+    if request.method == 'POST':
+        number = request.form['number']
+        if number is None:
+            return "number is none"
+        f=open("secret.txt", "w+")
+        f.write(number)
+        return "OK"
+    else:
+        return "INVALID METHOD"
+
+@app.route('/clear',methods=['GET','POST'])
+def clear1():
+    f=open("secret.txt", "w+")
+    f.write("")
+    return "OK"
 
 @app.route('/search')
 def search():

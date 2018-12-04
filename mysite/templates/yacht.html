@@ -5,6 +5,7 @@
 
 	<link rel="stylesheet" href="styles/main.css">
 
+  <script src="scripts/call.js"></script>
   <link rel="stylesheet" href="styles/yacht.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:200,300,400,500|Montserrat:200,300,400,500|Poiret+One|Tenor+Sans" rel="stylesheet">
@@ -54,15 +55,15 @@
 
 
 <div class="popup_content_wrapper">
-        <div class="popup_content">
+        <div class="popup_content" id="content_popup">
             <div class="button_close" id="button_close" >
 
 <i class="fa fa-close" style="font-size:48px;color: #92a8af"></i>
 
             </div>
             <p class="montserrata popup_text">Введите свой номер телефона и мы<br> перезвоним вам через 5 минут!</p>
-            <input class="number" type="text" name="login" value="+380"><br>
-            <input class="montserrata button blue_greenish button_padding"  type="submit" name="reset" value="Позвоните мне">
+            <input class="number" type="text" name="login" id="phone" value="+380"><br>
+            <input class="montserrata button blue_greenish button_padding" onclick="call(document.getElementById('phone').value)" type="submit" name="reset" value="Позвоните мне" style="width: 60%;">
         </div>
     </div>
 
@@ -74,7 +75,7 @@
       function popupHide(e){
           document.getElementById("popup").style.display = "none";
       }
-      let btn_close = document.getElementById("button_close")
+      let btn_close = document.getElementById("button_close");
       btn_close.addEventListener('click',popupHide,false);
   </script>
 </div>
@@ -83,14 +84,12 @@
 
 
       <ul class="navigation poiret">
-        <a><li><img class="logo" src="images/logo.png"></li></a>
-        <a href="/"><li>на главную</li></a>
-        <a href="/search"><li>поиск яхты</li></a>
-        <a href="/about"><li>о нас</li></a>
+        <li><a><img class="logo" src="images/logo.png"></a></li>
+        <li><a href="/index">на главную</a></li>
+        <li><a href="/search">поиск яхты</a></li>
+        <li><a href="/about">о нас</a></li>
+        <li class="poiret">+380661295869</li>
       </ul>
-      <span class="contact poiret">
-        +380661295869
-      </span>
   </div>
 
   <div class="header_content poiret">
@@ -150,7 +149,7 @@
 
       <div class="item_wrapper">
         <h4 class="montserrata">вместимость: {{ yacht[4] }} людей</h4>
-        <h4 class="montserrata">тип {{ yacht[5] }}</h4>
+        <h4 class="montserrata">тип парусная</h4>
         <div class="text">
         <!--  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         -->

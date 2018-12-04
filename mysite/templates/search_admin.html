@@ -10,29 +10,38 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 	<!-- jquery -->
-	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+	<script src="scripts/search.js"></script>
 
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<!--<script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:200,300,400,500|Montserrat:200,300,400,500|Poiret+One|Tenor+Sans" rel="stylesheet">
+
+
+<script>
   $( function() {
     $( "#slider-range" ).slider({
       range: true,
       min: 0,
-      max: 500,
-      values: [ 75, 300 ],
+      max: {{ max_price[0][0] }},
+      values: [ {{ params[4] }}, {{ params[5] }} ],
       slide: function( event, ui ) {
+         $("#price_start").val(ui.values[ 0 ]);
+         $("#price_finish").val(ui.values[ 1 ]);
+
         $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
       }
     });
     $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+      " - $" + $( "#slider-range" ).slider( "values", 1 ));
   } );
-  </script>-->
+  </script>
 
 </head>
 <body>
@@ -40,46 +49,59 @@
    <div class="header">
 
 
-      <ul class="navigation poiret">
-        <a><li><img class="logo" src="images/logo.png"></li></a>
-        <a><li>на главную</li></a>
-        <a><li>о нас</li></a>
-      </ul>
-      <span class="contact poiret">
-        +380661295869
-      </span>
+  		<ul class="navigation poiret">
+        <li><a><img class="logo" src="images/logo.png"></a></li>
+  			<li><a href="/search">поиск яхты</a></li>
+  			<li><a href="/about">о нас</a></li>
+        <li class="poiret">+380661295869</li>
+  		</ul>
   </div>
-  
 
 
   <div class="content">
     <form class="filter montserrata">
-      <h4>активные фильтры</h4>
-        <label>направление</label>
-        <select name="directions[] wtype="wide">
+      <h4>Активные фильтры</h4>
+        <label>Направление</label>
+        <select name="directions[]" wtype="wide">
 
          {% for d in directions %}
-          <option value="{{ d[1] }}">{{ d[1] }}</option>
+            {% if params[6] == d[1] %}
+          <option selected value="{{ d[1] }}">{{ d[1] }}</option>
+              {% else %}
+            <option value="{{ d[1] }}">{{ d[1] }}</option>
+            {% endif %}
+
         {% endfor %}
 
         </select>
 
-        <label>тип яхты</label>
+        <label>Тип яхты</label>
         <select name="yacht_type[]" wtype="wide">
         {% for d in yacht_types %}
-          <option value="{{ d[1] }}">{{ d[1] }}</option>
+            {% if params[3] == d[1] %}
+          <option selected value="{{ d[1] }}">{{ d[1] }}</option>
+          {% else %}
+            <option value="{{ d[1] }}">{{ d[1] }}</option>
+            {% endif %}
+
         {% endfor %}
         </select>
 
-        <label>дата отправления</label>
+        <label>Дата отправления</label>
         <input type="date" name="date_start" wtype="wide">
-        <label>дата возвращения</label>
+        <label>Дата возвращения</label>
         <input type="date" name="date_finish" wtype="wide">
-        <label>бюджет</label>
-        <input type="range" name="money" wtype="wide">
-        <label>количество людей</label>
-        <input type="range" name="money" wtype="wide">
+        <label>Бюджет</label>
+        <div id="slider-range" style="width: 100%;"></div>
+        <input type="text" id="amount" readonly style="font-size: 12pt;border:0; color:white; font-weight:bold;background: transparent;">
+
+        <label>Количество людей</label><span id="slider-seat" style="width: 100%;">от {{ params[2] }}</span>
+        <input type="range" value="{{ params[2] }}" step="1" name="yacht_seat" oninput="document.getElementById('slider-seat').innerHTML = 'от ' + this.value" onchange="document.getElementById('slider-seat').innerHTML = 'от ' + this.value" wtype="wide" min="1" max="50">
         <input class="button" type="reset" name="reset" value="Сбросить фильтры">
+        <input type="hidden" name="price_start" value="0" id="price_start" >
+        <input type="hidden" name="price_finish" value="999999" id="price_finish">
+
+        <input class="button" type="submit" name="reset" value="Поиск">
     </form>
 
 
@@ -87,15 +109,46 @@
 
     <div class="results">
       <div class="header_content poiret">
-    <div class="count"><div class="results_count">{{ results_count }}</div>  результатов</div>
-    <div class="sort">сортировать по 
-    <select>
-    <option value="rank">популярности</option>
-    <option value="chebyrachka">Чебурашка</option>
+    <div class="count"><div style="padding-top: 10px;" class="results_count">{{ results_count }}</div>  результатов</div>
+    <div class="sort">сортировать по
+    <select onchange="GetSelectedItem('sort')" id="sort">
+
+         {% if "rank" == params[9] %}
+
+    <option selected value="rank">популярности</option>
     <option value="price">цене</option>
+              {% else %}
+
+    <option  value="rank">популярности</option>
+    <option selected value="price">цене</option>
+            {% endif %}
+
     </select>
     </div>
   </div>
+ {% for yacht in yachts %}
+  <div class="item_wrapper">
+          <h3>{{ yacht[1]}}</h3>
+          <div class="poiret">Ближайшие даты: </div>
+          <div class="avaliable poiret">
+
+                <input type="date" style="background: transparent; border: 1px solid black"  name="date_start" wtype="wide">
+                 <input type="date" style="background: transparent; border: 1px solid black" name="date_finish" wtype="wide">
+              </div>
+          <div class="img"><img  src="images/search/yacht.jpg"></div>
+          <div class="text montserrat">
+          <!--Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate get, arcu. Ulla consequat massa quis enim. Donec pede justo.-->
+
+          <textarea style="width: 100%; height: 100%;">{{ yacht[6] }}</textarea>
+          </div>
+          <div class="price">
+            <input class="montserrata" value=" {{ yacht[2] }}" style="width: 126px;">
+            <span class="poiret">грн/сутки</span>
+          </div>
+          <button class="button" onclick='location.href="/yacht?id={{ yacht[0] }}"'>Изменить</button>
+      </div>
+      {% endfor %}
+<!--
      <div class="item_wrapper">
           <h3>Яхта"вмвл"</h3>
           <div class="poiret">ближайшие даты: </div>
@@ -104,10 +157,10 @@
               </div>
           <div class="img"><img  src="images/search/yacht.jpg"></div>
           <div class="text montserrat">
-             Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate get, arcu. Ulla consequat massa quis enim. Donec pede justo. 
+             Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate get, arcu. Ulla consequat massa quis enim. Donec pede justo.
           </div>
           <div class="price">
-            <span class="montserrata">1300</span> 
+            <span class="montserrata">1300</span>
             <span class="poiret">грн/сутки</span>
           </div>
           <button class="button">Rent</button>
@@ -121,10 +174,10 @@
               </div>
           <div class="img"><img  src="images/search/yacht.jpg"></div>
           <div class="text montserrat">
-             Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate get, arcu. Ulla consequat massa quis enim. Donec pede justo. 
+             Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate get, arcu. Ulla consequat massa quis enim. Donec pede justo.
           </div>
           <div class="price">
-            <span class="montserrata">1300</span> 
+            <span class="montserrata">1300</span>
             <span class="poiret">грн/сутки</span>
           </div>
           <button class="button">Rent</button>
@@ -138,10 +191,10 @@
               </div>
           <div class="img"><img  src="images/search/yacht.jpg"></div>
           <div class="text montserrat">
-             Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate get, arcu. Ulla consequat massa quis enim. Donec pede justo. 
+             Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate get, arcu. Ulla consequat massa quis enim. Donec pede justo.
           </div>
           <div class="price">
-            <span class="montserrata">1300</span> 
+            <span class="montserrata">1300</span>
             <span class="poiret">грн/сутки</span>
           </div>
           <button class="button">Rent</button>
@@ -155,21 +208,30 @@
               </div>
           <div class="img"><img  src="images/search/yacht.jpg"></div>
           <div class="text montserrat">
-             Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate get, arcu. Ulla consequat massa quis enim. Donec pede justo. 
+             Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate get, arcu. Ulla consequat massa quis enim. Donec pede justo.
           </div>
           <div class="price">
-            <span class="montserrata">1300</span> 
+            <span class="montserrata">1300</span>
             <span class="poiret">грн/сутки</span>
           </div>
           <button class="button">Rent</button>
       </div>
 
+-->
       <div class="page_selector poiret">
         <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
+
+            {% for i in range(0,params[7]) %}
+
+               {% if i == params[8] %}
+
+          <li style="background: #526d7c;"><a onclick="go({{ i*10 }} )">{{ i+1 }}</a></li>
+              {% else %}
+
+          <li><a onclick="go({{ i*10 }} )">{{ i+1 }}</a></li>
+            {% endif %}
+
+          {% endfor %}
           </ul>
       </div>
     </div>
@@ -185,7 +247,7 @@
       </div>
       <span>+380661295869
         +380661295869
-        ул. Кого-то 35, 
+        ул. Кого-то 35,
         Бердичев
       </span>
 

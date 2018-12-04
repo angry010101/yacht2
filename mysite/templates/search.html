@@ -15,6 +15,15 @@
 
 	<script src="scripts/search.js"></script>
 
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#slider" ).slider();
+  } );
+  </script>
+
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
@@ -40,6 +49,19 @@
   } );
   </script>
 
+  <script>
+  $( function() {
+    $( "#slider" ).slider({
+        min: 0,
+	max: 50,
+	values: {{ params[2] }},
+	slide: function(event, ui) {
+	    document.getElementById('slider-seat').innerHTML = 'от ' + ui.value;
+    }
+});
+  } );
+  </script>
+
 </head>
 <body>
 <div class="grid-container">
@@ -47,13 +69,13 @@
 
 
       <ul class="navigation poiret">
-        <a><li><img class="logo" src="images/logo.png"></li></a>
-        <a href="/"><li>на главную</li></a>
-        <a href="/about"><li>о нас</li></a>
+        <li><a><img class="logo" src="images/logo.png"></a></li>
+
+        <li><a href="/">на главную</a></li>
+        <li><a href="/search">поиск яхты</a></li>
+        <li><a href="/about">о нас</a></li>
+        <li class="poiret">+380661295869</li>
       </ul>
-      <span class="contact poiret">
-        +380661295869
-      </span>
   </div>
 
 
@@ -88,20 +110,23 @@
         </select>
 
         <label>Дата отправления</label>
-        <input type="date" name="date_start" wtype="wide">
+        <input  type="date" name="date_start" wtype="wide" value="2018-08-11">
         <label>Дата возвращения</label>
-        <input type="date" name="date_finish" wtype="wide">
-        <label>Бюджет</label>
-        <div id="slider-range" style="width: 100%;"></div>
-        <input type="text" id="amount" readonly style="font-size: 12pt;border:0; color:white; font-weight:bold;background: transparent;">
+        <input class = "down" type="date" name="date_finish" wtype="wide" value="2018-09-11">
+        <label class = "down">Бюджет</label>
+        <div class = "down" id="slider-range" style="width: 100%;"></div>
+        <input class = "down" type="text" id="amount" readonly style="font-size: 12pt;border:0; color:white; font-weight:bold;background: transparent;">
 
-        <label>Количество людей</label><span id="slider-seat" style="width: 100%;">от {{ params[2] }}</span>
-        <input type="range" value="{{ params[2] }}" step="1" name="yacht_seat" oninput="document.getElementById('slider-seat').innerHTML = 'от ' + this.value" onchange="document.getElementById('slider-seat').innerHTML = 'от ' + this.value" wtype="wide" min="1" max="50">
-        <input class="button" type="reset" name="reset" value="Сбросить фильтры">
+        <label class = "down">Количество людей</label>
+        <span id="slider-seat" style="width: 100%;">от {{ params[2] }}</span>
+        <div id="slider" id="slider-seat" style="width: 100%;"></div>
+
+        //
+        <input class="button down" type="reset" name="reset" value="Сбросить фильтры">
         <input type="hidden" name="price_start" value="0" id="price_start" >
         <input type="hidden" name="price_finish" value="999999" id="price_finish">
 
-        <input class="button" type="submit" name="reset" value="Поиск">
+        <input class="button down" type="submit" name="reset" value="Поиск">
     </form>
 
 
@@ -133,7 +158,7 @@
           <div class="avaliable poiret">
                 Сегодня
               </div>
-          <div class="img"><img  src="images/search/yacht.jpg"></div>
+          <div class="img"><img  src="images/yacht{{ 1+(yacht[0]%11) }}.jpg"></div>
           <div class="text montserrat">
           <!--Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate get, arcu. Ulla consequat massa quis enim. Donec pede justo.-->
 

@@ -28,26 +28,33 @@
 	color: white;
 }
 
+#slider-seat {
+	color: white;
+}
+
 .header_content .count,.sort{
 	flex: 1;
 	text-align: left;
-	height: 100%;
+	height:50px;
+	width: fit-content;
 	display: flex;
 	align-items: center;
 
 }
+
+#sort{
+	height: 30px;
+	color: white;
+	width: 100px;
+	padding-left: 5px;
+}
+
 
 .sort {
 	justify-content: flex-end;
 }
 
 
-select {
-	display: inline-block;
-	height: 28px;
-	background-image: url(../images/search/popularitybar.png);
-	border-radius: 4px;
-}
 
 .results_count{
 	margin-right: 5px;
@@ -73,6 +80,8 @@ select {
 }
 
 .filter{
+	border-right: white solid 10px;
+	border-left: white solid 10px;
 	position: sticky;
 	top: 0;
 	flex-direction: column;
@@ -80,27 +89,29 @@ select {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
-	background: url(../images/search/filters_background.jpg);
-	color: white;
+	background: url(../images/filter.jpg);
+	background-size: cover;
+	color: #2b4157;
     padding-top: 2%;
     padding-left: 2%;
     padding-right: 2%;
     padding-bottom: 2%;
     font-size: 1em;
     width: 25%;
-    height: 85vmin;
+    height: 90vmin;
 }
 
+form select, input{
+	color: #2b4157;
+	height: 7%;
+}
+.filter input {
+	height: 5.5%;
+	width: 98%;
+}
 
-form select, input[wtype="wide"] {
-	height: 30px;
-	width: 100%;
-	border-width: 0;
-	border-radius: 4px;
-	background-image: url("../images/search/widebar.jpg");
-	background-size: cover;
-	font-family: 'Poiret One', cursive;
-  font-size: 1.3em;
+.down {
+	color: white;
 }
 
 .button {
@@ -108,6 +119,11 @@ form select, input[wtype="wide"] {
 	border-radius: 4px;
 	align-self: center;
 }
+
+.form_wrapper {
+	color:
+}
+
 
  .results{
 	width: 65%;
@@ -155,7 +171,7 @@ form select, input[wtype="wide"] {
 
  .item_wrapper{
   color: rgb(0, 42, 61);
-  height: 33%;
+  height: 300px;
   width: 95%;
   background: #d4d7e0;
   margin: 0;
@@ -174,4 +190,17 @@ form select, input[wtype="wide"] {
 
 .button_padding{
     padding: 16px 26px;
+}
+.img{
+  margin-right: 5%;
+  grid-row: 2/ span 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+input[type="range"] {
+	border-width: 0;
+	height: 4px;
+	background-color: white;
 }
